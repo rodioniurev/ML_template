@@ -1,0 +1,21 @@
+model:
+    name: 'CNN'
+
+experiment:
+    name: 'new'
+
+callbacks:
+    modelcheckpoint:
+        filepath: 'direct'
+        check_monitor: ''
+        checkpoint_mode: ''
+        checkpoint_save_best_only: False
+        checkpoint_save_weights_only: True
+        checkpoint_verbose: ''
+    csvlogger:
+        filename: ''
+        append: True
+        separator: ';'
+    tensorboard:
+        log_dir: ''
+        write_graph: True
