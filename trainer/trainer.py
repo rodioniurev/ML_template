@@ -36,24 +36,13 @@ class DefectTrainer(BaseTrain):
         )
 
     def train(self):
-
-
-
-def train_model(model, train_generator, val_generator):
-    # # балансировка классов
-    # weight_for_0 = 0.015  # (1 / len(os.listdir(fr'{train_dir}/42'))) * (nb_train_samples / 2.0)
-    # weight_for_1 = 0.04  # (1 / len(os.listdir(fr'{train_dir}/53'))) * (nb_train_samples / 2.0)
-    # class_weights = {0: weight_for_0, 1: weight_for_1}
-    # print('Class weights:', class_weights)
-
-
-    model.fit(
-        x=train_generator,
-        steps_per_epoch=nb_train_samples // batch_size,
-        epochs=epochs,
-        validation_data=val_generator,
-        validation_steps=nb_validation_samples // batch_size,
-        callbacks=[model_checkpoint_callback, csv_logger],
-        class_weight=class_weights
-    )
-    return model
+        self.model.fit(
+            x=train_generator,
+            steps_per_epoch=nb_train_samples // batch_size,
+            epochs=epochs,
+            validation_data=val_generator,
+            validation_steps=nb_validation_samples // batch_size,
+            callbacks=[model_checkpoint_callback, csv_logger],
+            class_weight=class_weights
+        )
+        return model
