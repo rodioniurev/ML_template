@@ -7,10 +7,6 @@ from tensorflow.python.keras.layers import Conv2D, MaxPooling2D, GlobalMaxPoolin
 from tensorflow.python.keras.models import Sequential
 from base.base_model import BaseModel
 
-input_shape = ()
-optimizer = ''
-learning_rate = ''
-
 
 class CNNModel(BaseModel):
     def __init__(self, config):
@@ -18,7 +14,7 @@ class CNNModel(BaseModel):
 
     def build_model(self):
         self.model = Sequential()
-        self.model.add(Conv2D(32, (3, 3), input_shape=input_shape, activation='linear'))
+        self.model.add(Conv2D(32, (3, 3), input_shape=self.config.config.model.input_shape, activation='linear'))
         self.model.add(BatchNormalization())
         self.model.add(Activation('relu'))
         self.model.add(MaxPooling2D(pool_size=(2, 2)))
@@ -41,5 +37,5 @@ class CNNModel(BaseModel):
 
         self.model.optimizer = adam.Adam()
         self.model.compile(loss='binary_crossentropy',
-                           optimizer='adam',
+                           optimizer=self.config.config.model.optimizer,
                            metrics=[tf.keras.metrics.BinaryAccuracy(), tf.keras.metrics.AUC()])
