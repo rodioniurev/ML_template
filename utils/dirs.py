@@ -1,17 +1,11 @@
-import os
+from pathlib import Path
 
 
-def create_dirs(dirs):
+def create_dirs(dirs: list) -> None:
     """
     dirs - a list of directories to create if these directories are not found
-    :param dirs:
-    :return exit_code: 0:success -1:failed
+    :param dirs: list
+    Usage: create_dirs(['test_dir', 'test_2_dir'])
     """
-    try:
-        for dir_ in dirs:
-            if not os.path.exists(dir_):
-                os.makedirs(dir_)
-        return 0
-    except Exception as err:
-        print(f"Creating directories error: {err}")
-        exit(-1)
+    for dir_ in dirs:
+        Path(dir_).mkdir(parents=True, exist_ok=True)

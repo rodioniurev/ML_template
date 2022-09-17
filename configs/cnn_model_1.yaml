@@ -5,9 +5,9 @@ model:
 
 train_data:
     batch_size: 1
-    image_size: (2,2)
+    image_size: (98, 232)
     path_file_csv: ''
-    y_file: 'file_path: 1'
+#    y_file: 'file_path: 1' не нужен!
 
 test_data:
     batch_size: 1
