@@ -1,11 +1,12 @@
 import os.path
 import time
+from pathlib import Path
 
 from dotmap import DotMap
 from yaml import load, FullLoader
 
 
-def get_config_from_yaml(yaml_file: str) -> object:
+def get_config_from_yaml(yaml_file: str) -> DotMap:
     """
     Set the configuration in object
     :param yaml_file: string (path to file)
@@ -40,6 +41,6 @@ def set_config_dirs(yaml_file: str) -> object:
     return config
 
 
-cfg = set_config_dirs('configs/cnn_model_1.yaml')
+cfg = set_config_dirs('../configs/cnn_model_1.yaml')
 
 print(cfg.callbacks.modelcheckpoint.filepath, cfg.callbacks.write_graf, cfg.callbacks.tensorboard.log_dir)
