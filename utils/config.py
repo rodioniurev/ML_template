@@ -15,7 +15,8 @@ def get_config_from_yaml(yaml_file: str) -> DotMap:
     with open(yaml_file, 'r', encoding='utf8') as config_file:
         return DotMap(load(config_file, Loader=FullLoader))
 
-# Здесь можно сделать разбор и алерт по поводу консистентности данных (например, совпадает ли image_size)
+# Здесь можно сделать разбор и алерт по поводу
+# консистентности данных (например, совпадает ли image_size)
 # если папка уже существует
 # если батч на тесте маловат, рекомендацию
 # и т.п.
@@ -39,8 +40,3 @@ def set_config_dirs(yaml_file: str) -> object:
         config.experiment.name,
         "checkpoints/")
     return config
-
-
-cfg = set_config_dirs('../configs/cnn_model_1.yaml')
-
-print(cfg.callbacks.modelcheckpoint.filepath, cfg.callbacks.write_graf, cfg.callbacks.tensorboard.log_dir)

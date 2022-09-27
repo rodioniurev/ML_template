@@ -10,7 +10,7 @@ class BaseDataLoader(ABC):
 
     @abstractmethod
     def get_train_data(self):
-        pass
+        self.config = config
 
     @abstractmethod
     def get_test_data(self):
