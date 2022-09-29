@@ -5,13 +5,15 @@ model:
 
 train_data:
     batch_size: 1
-    image_size: (98, 232)
+    image_width: 98
+    image_height: 232
+    image_size: !!python/tuple [98, 232]
     path_file_csv: ''
 #    y_file: 'file_path: 1' не нужен!
 
 test_data:
     batch_size: 1
-    image_size: (2,2)
+    image_size: !!python/tuple [2,2]
     path_file_csv: ''
 
 metrics:
